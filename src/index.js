@@ -1,17 +1,75 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let initState = {
+  gameInProgress: false,
+  letters: [],
+  foundWords: []
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function Word({word}) {
+  return <div>Un mot trouvé par le joueur</div>
+}
+
+class WordsList extends React.Component {
+
+  render () {
+    return <div>Liste des mots trouvés par le joueur</div>
+  }
+
+}
+
+class Timer extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      min: 3,
+      sec: 0
+    }
+  }
+
+  render () {
+    return <div>Le minuteur</div>
+  }
+
+}
+
+function Letter({letter}) {
+  return <div>Un dé</div>
+}
+
+class Grid extends React.Component {
+
+  constructor() {
+    super(props)
+    this.state = {
+      letters: []
+    }
+  }
+
+  generateLetters() {
+
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      letters: []
+    })
+  }
+
+  render() {
+    return <div>Le grille de lettres</div>
+  }
+
+}
+
+class App extends React.Component {
+
+  render() {
+    return <div>L'application</div>
+  }
+
+}
+
+ReactDOM.render(<App />, document.getElementById('app'))
