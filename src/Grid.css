@@ -1,0 +1,11 @@
+.grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0;
+    height: 400px;
+    width: 400px;
+    border-radius: 20px;
+    border: 20px solid #f0932b;
+}
