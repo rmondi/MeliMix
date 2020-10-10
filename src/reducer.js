@@ -1,4 +1,4 @@
-import './actions_types'
+import * as ACTIONS from './actions_types'
 
 let initState = {
   gameInProgress: false,
@@ -6,21 +6,24 @@ let initState = {
   foundWords: []
 };
 
-const reducer = (state = stateInit, action) => {
+const Reducer = (state = initState, action) => {
 
   let newState = {}
 
-  if (action.type === ADD_WORD) {
+  if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.foundWords
     list.push(action.word)
 
     newState = Object.assign({}, state, { foundWords: list })
 
-  } else if (action.type === DELETE_WORD) {
+  } else if (action.type === ACTIONS.DELETE_WORD) {
 
     let list = state.foundWords
-    list = list.filter((elem, i) => i === action.index ? return false : return true)
+    list = list.filter((elem, i) => {
+      if (i === action.index) return false
+      else return true
+    })
 
     newState = Object.assign({}, state, { foundWords: list })
 
@@ -28,7 +31,7 @@ const reducer = (state = stateInit, action) => {
     newState = state
   }
 
-  return newsState
+  return newState
 }
 
-export default reducer
+export default Reducer
