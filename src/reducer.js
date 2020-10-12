@@ -1,9 +1,9 @@
 import * as ACTIONS from './actions_types'
 
 let initState = {
-  gameInProgress: false,
+  status: "",
   letters: [],
-  foundWords: []
+  words: []
 };
 
 const Reducer = (state = initState, action) => {
@@ -12,20 +12,20 @@ const Reducer = (state = initState, action) => {
 
   if (action.type === ACTIONS.ADD_WORD) {
 
-    let list = state.foundWords
+    let list = state.words
     list.push(action.word)
 
-    newState = Object.assign({}, state, { foundWords: list })
+    newState = Object.assign({}, state, { words: list })
 
   } else if (action.type === ACTIONS.DELETE_WORD) {
 
-    let list = state.foundWords
+    let list = state.words
     list = list.filter((elem, i) => {
       if (i === action.index) return false
       else return true
     })
 
-    newState = Object.assign({}, state, { foundWords: list })
+    newState = Object.assign({}, state, { words: list })
 
   } else {
     newState = state

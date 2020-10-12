@@ -1,7 +1,7 @@
 import React from 'react'
-import './Dice.css'
+import './Letter.css'
 
-class Dice extends React.Component {
+class Letter extends React.Component {
 
   direction() {
 
@@ -49,7 +49,7 @@ class Dice extends React.Component {
     const letter = this.props.children
 
     return (
-      <div className={"dice " + this.direction()}>
+      <div className={"letter " + this.direction()}>
         <span className={this.isMarked(letter) ? "marked" : undefined} onClick={this.handleClick}>
           { letter }
         </span>
@@ -60,4 +60,4 @@ class Dice extends React.Component {
 
 }
 
-export default Dice;
+export default Letter;

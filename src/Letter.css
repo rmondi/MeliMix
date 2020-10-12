@@ -1,4 +1,4 @@
-.dice {
+.letter {
   margin: 0;
   padding: 0;
   height: 25%;
@@ -7,23 +7,23 @@
   box-sizing: border-box;
 }
 
-.dice.deg0 {
+.letter.deg0 {
   transform: rotate(0deg);
 }
 
-.dice.deg90 {
+.letter.deg90 {
   transform: rotate(90deg);
 }
 
-.dice.deg180 {
+.letter.deg180 {
   transform: rotate(180deg);
 }
 
-.dice.deg270 {
+.letter.deg270 {
   transform: rotate(270deg);
 }
 
-.dice > span {
+.letter > span {
   position: relative;
   display: flex;
   justify-content: center;
@@ -41,16 +41,16 @@
               background-color ease-in-out .3s;
 }
 
-.dice > span:hover {
+.letter > span:hover {
   background-color:
 }
 
-.dice > span.selected {
+.letter > span.selected {
   background-color: #2ecc71;
   color: #fff;
 }
 
-.dice > span.marked:before {
+.letter > span.marked:before {
   content: "";
   position: absolute;
   bottom: 10%;

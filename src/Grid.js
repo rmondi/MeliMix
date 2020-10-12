@@ -1,5 +1,5 @@
 import React from 'react'
-import Dice from './Dice'
+import Letter from './Letter'
 import './Grid.css'
 
 class Grid extends React.Component {
@@ -7,7 +7,7 @@ class Grid extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dices: this.shakeDices()
+      letters: this.shakeDices()
     }
   }
 
@@ -50,14 +50,14 @@ class Grid extends React.Component {
 
   componentWillUnmount() {
     this.setState({
-      dices: []
+      letters: []
     })
   }
 
   render() {
     return (
       <div className='grid'>
-        { this.state.dices.map((elem, index) => <Dice key={index}>{elem}</Dice>) }
+        { this.state.letters.map((elem, index) => <Letter key={index}>{elem}</Letter>) }
       </div>
     )
   }
