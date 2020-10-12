@@ -15,22 +15,22 @@ class Grid extends React.Component {
 
     /* Simulating the 16 dices of the game */
     const dices = [
-      ["E", "T", "U", "K", "N", "O"],
-      ["E", "V", "G", "T", "I", "N"],
-      ["D", "E", "C", "A", "M", "P"],
-      ["I", "E", "L", "R", "U", "W"],
-      ["E", "H", "I", "F", "S", "E"],
-      ["R", "E", "C", "A", "L", "S"],
-      ["E", "N", "T", "D", "O", "S"],
-      ["O", "F", "X", "R", "I", "A"],
-      ["N", "A", "V", "E", "D", "Z"],
-      ["E", "I", "O", "A", "T", "A"],
-      ["G", "L", "E", "N", "Y", "U"],
-      ["B", "M", "A", "Q", "J", "O"],
-      ["T", "L", "I", "B", "R", "A"],
-      ["S", "P", "U", "L", "T", "E"],
-      ["A", "I", "M", "S", "O", "R"],
-      ["E", "N", "H", "R", "I", "S"]
+      ['E', 'T', 'U', 'K', 'N', 'O'],
+      ['E', 'V', 'G', 'T', 'I', 'N'],
+      ['D', 'E', 'C', 'A', 'M', 'P'],
+      ['I', 'E', 'L', 'R', 'U', 'W'],
+      ['E', 'H', 'I', 'F', 'S', 'E'],
+      ['R', 'E', 'C', 'A', 'L', 'S'],
+      ['E', 'N', 'T', 'D', 'O', 'S'],
+      ['O', 'F', 'X', 'R', 'I', 'A'],
+      ['N', 'A', 'V', 'E', 'D', 'Z'],
+      ['E', 'I', 'O', 'A', 'T', 'A'],
+      ['G', 'L', 'E', 'N', 'Y', 'U'],
+      ['B', 'M', 'A', 'Q', 'J', 'O'],
+      ['T', 'L', 'I', 'B', 'R', 'A'],
+      ['S', 'P', 'U', 'L', 'T', 'E'],
+      ['A', 'I', 'M', 'S', 'O', 'R'],
+      ['E', 'N', 'H', 'R', 'I', 'S']
     ]
 
     /* Array to store generatedDices */
@@ -56,7 +56,7 @@ class Grid extends React.Component {
 
   render() {
     return (
-      <div className="grid">
+      <div className='grid'>
         { this.state.dices.map((elem, index) => <Dice key={index}>{elem}</Dice>) }
       </div>
     )

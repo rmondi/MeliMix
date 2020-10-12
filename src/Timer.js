@@ -1,4 +1,5 @@
 import React from 'react';
+import './Timer.css'
 
 class Timer extends React.Component {
 
@@ -7,7 +8,7 @@ class Timer extends React.Component {
     this.timer = null
     this.state = {
       min: 0,
-      sec: 5
+      sec: 20
     }
   }
 
@@ -55,9 +56,13 @@ class Timer extends React.Component {
 
     if (this.state.min === 0 && this.state.sec === 0) {
       clearInterval(this.timer)
-      return <div>Temps écoulé</div>
+      return <div className='timer'><p>Temps écoulé</p></div>
     }
-    return <div>{this.formatTime(this.state)}</div>
+    return (
+      <div className={this.state.sec <= 5 ? 'timer end' : 'timer'}>
+        <p>{this.formatTime(this.state)}</p>
+      </div>
+    )
   }
 
 }
