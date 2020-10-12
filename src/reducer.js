@@ -10,7 +10,11 @@ const Reducer = (state = initState, action) => {
 
   let newState = {}
 
-  if (action.type === ACTIONS.ADD_WORD) {
+  if (action.type === ACTIONS.SET_STATUS) {
+
+    newState = Object.assign({}, state, { status: action.status })
+
+  } else if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.words
     list.push(action.word)
@@ -30,6 +34,8 @@ const Reducer = (state = initState, action) => {
   } else {
     newState = state
   }
+
+  console.log(action, newState);
 
   return newState
 }

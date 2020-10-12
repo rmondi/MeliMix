@@ -1,5 +1,8 @@
-import React from 'react';
+import React from 'react'
 import './Timer.css'
+
+import * as ACTIONS from './actions'
+import { connect } from 'react-redux'
 
 class Timer extends React.Component {
 
@@ -26,8 +29,6 @@ class Timer extends React.Component {
         sec = 59
       }
     }
-
-    console.log({min, sec})
 
     return { min, sec }
 
@@ -56,7 +57,7 @@ class Timer extends React.Component {
 
     if (this.state.min === 0 && this.state.sec === 0) {
       clearInterval(this.timer)
-      return <div className='timer'><p>Temps écoulé</p></div>
+      this.props.set_status('end')
     }
     return (
       <div className={this.state.sec <= 5 ? 'timer end' : 'timer'}>
@@ -67,4 +68,14 @@ class Timer extends React.Component {
 
 }
 
-export default Timer;
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    set_status: (status) => {
+      dispatch(ACTIONS.set_status(status))
+    }
+  }
+
+}
+
+export default connect(null, mapDispatchToProps)(Timer);
