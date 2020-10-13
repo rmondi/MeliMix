@@ -14,10 +14,16 @@ const set_letters = (letters) => {
   }
 }
 
-const set_word = (word) => {
+const set_word = (letter) => {
   return {
     type: ACTIONS.SET_WORD,
-    word: word
+    letter: letter
+  }
+}
+
+const set_new_game = () => {
+  return {
+    type: ACTIONS.SET_NEW_GAME
   }
 }
 
@@ -35,4 +41,4 @@ const delete_word = (index) => {
   }
 }
 
-export { set_status, set_letters, set_word, add_word, delete_word }
+export { set_status, set_letters, set_word, set_new_game, add_word, delete_word }

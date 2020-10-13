@@ -1,8 +1,8 @@
 import React from 'react'
-import Button from './Button'
 import Timer from './Timer'
 import Grid from './Grid'
 import AddWord from './AddWord'
+import PlayButton from './PlayButton'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from './actions'
@@ -18,7 +18,7 @@ class App extends React.Component {
     const status = this.props.status
 
     if (status === '') {
-      return <Button onclick={this.handleClick} type="primary">Lancer la partie</Button>
+      return <PlayButton />
     } else if (status === 'start') {
       return (
         <React.Fragment>
@@ -31,7 +31,7 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <div>Fin de la partie</div>
-          <Button onclick={this.handleClick} type="primary">Rejouer</Button>
+          <PlayButton />
         </React.Fragment>
       )
     }

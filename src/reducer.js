@@ -21,7 +21,16 @@ const Reducer = (state = initState, action) => {
 
   } else if (action.type === ACTIONS.SET_WORD) {
 
-    newState = Object.assign({}, state, { word: action.word })
+    newState = Object.assign({}, state, { word: state.word + action.letter })
+
+  } else if (action.type === ACTIONS.SET_NEW_GAME) {
+
+    newState = Object.assign({}, state, {
+      status: 'start',
+      letters: [],
+      word: '',
+      words: []
+    })
 
   } else if (action.type === ACTIONS.ADD_WORD) {
 

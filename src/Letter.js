@@ -25,7 +25,7 @@ class Letter extends React.Component {
   }
 
   isMarked(letter) {
-    let isMarked = false
+    let isMarked
 
     switch(letter) {
 
@@ -35,6 +35,8 @@ class Letter extends React.Component {
       case "Z":
         isMarked = true
       break
+      default:
+        isMarked = false
 
     }
 
@@ -43,8 +45,7 @@ class Letter extends React.Component {
 
   handleClick = (e) => {
     e.target.classList.add('selected')
-    console.log(this.props.word, e.target.innerText)
-    this.props.set_word(this.props.word + e.target.innerText)
+    this.props.set_word(e.target.innerText)
   }
 
   render() {
@@ -61,16 +62,10 @@ class Letter extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    word: state.word
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    set_word: (word) => {
-      dispatch(ACTIONS.set_word(word))
+    set_word: (letter) => {
+      dispatch(ACTIONS.set_word(letter))
     }
   }
 }
@@ -80,4 +75,4 @@ Letter.propTypes = {
   children: PropTypes.string
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Letter);
+export default connect(null, mapDispatchToProps)(Letter);

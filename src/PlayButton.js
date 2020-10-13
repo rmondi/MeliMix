@@ -1,21 +1,21 @@
 import React from 'react'
 import Button from './Button'
-import './AddWord.css'
+import './PlayButton.css'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from './actions'
 
-class AddWord extends React.Component {
+class PlayButton extends React.Component {
 
   handleClick = () => {
-    this.props.add_word(this.props.word)
+    this.props.set_new_game()
   }
 
   render() {
     return (
-      <div className='addword'>
+      <div className='play'>
         <Button onclick={this.handleClick} type='primary'>
-          {`Ajouter le mot ${this.props.word}`}
+          {this.props.status === '' ? 'Démarrer' : 'Rejouer'}
         </Button>
       </div>
     )
@@ -25,16 +25,16 @@ class AddWord extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    word: state.word
+    status: state.status
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add_word: (word) => {
-      dispatch(ACTIONS.add_word(word))
+    set_new_game: () => {
+      dispatch(ACTIONS.set_new_game())
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddWord)
+export default connect(mapStateToProps, mapDispatchToProps)(PlayButton)
