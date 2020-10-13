@@ -1,0 +1,22 @@
+.btn {
+	display: inline-flex;
+  align-items: center;
+	padding: 0 30px;
+	height: 40px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	color: #FFFFFF;
+	border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color ease-in-out .3s;
+}
+
+.btn-primary {
+  background-color: rgba(52, 152, 219, 1);
+}
+
+.btn-primary:hover {
+  background-color: rgba(52, 152, 219, .8);
+}

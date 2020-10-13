@@ -8,7 +8,7 @@ import * as ACTIONS from './actions'
 
 class App extends React.Component {
 
-  handleClick(e) {
+  handleClick = (e) => {
     this.props.set_status('start')
   }
 
@@ -17,7 +17,7 @@ class App extends React.Component {
     const status = this.props.status
 
     if (status === '') {
-      return <Button onclick={this.handleClick.bind(this)}>Lancer la partie</Button>
+      return <Button onclick={this.handleClick} type="primary">Lancer la partie</Button>
     } else if (status === 'start') {
       return (
         <React.Fragment>
@@ -26,7 +26,12 @@ class App extends React.Component {
         </React.Fragment>
       )
     } else if (status === 'end') {
-      return <div>Fin de la partie</div>
+      return (
+        <React.Fragment>
+          <div>Fin de la partie</div>
+          <Button onclick={this.handleClick} type="primary">Rejouer</Button>
+        </React.Fragment>
+      )
     }
   }
 
