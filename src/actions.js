@@ -35,4 +35,4 @@ const delete_word = (index) => {
   }
 }
 
-export { set_status, set_letters, add_word, delete_word }
+export { set_status, set_letters, set_word, add_word, delete_word }

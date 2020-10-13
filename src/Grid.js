@@ -9,12 +9,10 @@ class Grid extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.props.set_letters(this.shakeDices())
   }
 
   shakeDices() {
-
     /* Simulating the 16 dices of the game */
     const dices = [
       ['E', 'T', 'U', 'K', 'N', 'O'],
@@ -47,7 +45,6 @@ class Grid extends React.Component {
     }
 
     return generatedDices
-
   }
 
   render() {
@@ -57,25 +54,20 @@ class Grid extends React.Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
-
   return {
     letters: state.letters
   }
-
 }
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
     set_letters: (letters) => {
       dispatch(ACTIONS.set_letters(letters))
     }
   }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);

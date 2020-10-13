@@ -21,14 +21,14 @@ const Reducer = (state = initState, action) => {
 
   } else if (action.type === ACTIONS.SET_WORD) {
 
-    Object.assign({}, state, { word: action.word })
+    newState = Object.assign({}, state, { word: action.word })
 
   } else if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.words
     list.push(action.word)
 
-    newState = Object.assign({}, state, { words: list })
+    newState = Object.assign({}, state, { word: '', words: list })
 
   } else if (action.type === ACTIONS.DELETE_WORD) {
 

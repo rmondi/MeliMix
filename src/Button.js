@@ -7,11 +7,11 @@ function Button ({ onclick, type, children }) {
 }
 
 Button.defaultProps = {
-  onClick: () => null
+  onclick: () => null
 }
 
 Button.propTypes = {
-  onClick: PropTypes.func,
+  onclick: PropTypes.func,
   type: PropTypes.string,
   children: PropTypes.string
 }
