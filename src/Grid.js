@@ -2,13 +2,15 @@ import React from 'react'
 import Letter from './Letter'
 import './Grid.css'
 
+import { connect } from 'react-redux'
+import * as ACTIONS from './actions'
+
 class Grid extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      letters: this.shakeDices()
-    }
+
+    this.props.set_letters(this.shakeDices())
   }
 
   shakeDices() {
@@ -48,20 +50,32 @@ class Grid extends React.Component {
 
   }
 
-  componentWillUnmount() {
-    this.setState({
-      letters: []
-    })
-  }
-
   render() {
     return (
       <div className='grid'>
-        { this.state.letters.map((elem, index) => <Letter key={index}>{elem}</Letter>) }
+        { this.props.letters.map((elem, index) => <Letter key={index}>{elem}</Letter>) }
       </div>
     )
   }
 
 }
 
-export default Grid;
+const mapStateToProps = (state) => {
+
+  return {
+    letters: state.letters
+  }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    set_letters: (letters) => {
+      dispatch(ACTIONS.set_letters(letters))
+    }
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Grid);

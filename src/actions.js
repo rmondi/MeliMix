@@ -7,10 +7,10 @@ const set_status = (status) => {
   }
 }
 
-const add_letter = (letter) => {
+const set_letters = (letters) => {
   return {
-    type: ACTIONS.ADD_LETTER,
-    letter: letter
+    type: ACTIONS.SET_LETTERS,
+    letters: letters
   }
 }
 
@@ -28,4 +28,4 @@ const delete_word = (index) => {
   }
 }
 
-export { set_status, add_letter, add_word, delete_word }
+export { set_status, set_letters, add_word, delete_word }

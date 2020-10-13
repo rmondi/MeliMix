@@ -14,6 +14,10 @@ const Reducer = (state = initState, action) => {
 
     newState = Object.assign({}, state, { status: action.status })
 
+  } else if (action.type === ACTIONS.SET_LETTERS) {
+
+    newState = Object.assign({}, state, { letters: action.letters })
+
   } else if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.words
