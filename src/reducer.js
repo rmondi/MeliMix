@@ -3,6 +3,7 @@ import * as ACTIONS from './actions_types'
 let initState = {
   status: "",
   letters: [],
+  word: '',
   words: []
 };
 
@@ -17,6 +18,10 @@ const Reducer = (state = initState, action) => {
   } else if (action.type === ACTIONS.SET_LETTERS) {
 
     newState = Object.assign({}, state, { letters: action.letters })
+
+  } else if (action.type === ACTIONS.SET_WORD) {
+
+    Object.assign({}, state, { word: action.word })
 
   } else if (action.type === ACTIONS.ADD_WORD) {
 

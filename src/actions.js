@@ -14,6 +14,13 @@ const set_letters = (letters) => {
   }
 }
 
+const set_word = (word) => {
+  return {
+    type: ACTIONS.SET_WORD,
+    word: word
+  }
+}
+
 const add_word = (word) => {
   return {
     type: ACTIONS.ADD_WORD,
