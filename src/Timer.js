@@ -16,7 +16,6 @@ class Timer extends React.Component {
   }
 
   decreaseTime({min, sec}) {
-
     sec--
 
     if (sec < 0) {
@@ -35,7 +34,6 @@ class Timer extends React.Component {
   }
 
   formatTime({min, sec}) {
-
     min = min < 10 ? `0${min}` : min
     sec = sec < 10 ? `0${sec}` : sec
 
@@ -45,7 +43,6 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-
     this.timer = setInterval(() => {
       const time = this.decreaseTime(this.state)
       this.setState(time)
@@ -53,12 +50,17 @@ class Timer extends React.Component {
 
   }
 
-  render () {
-
+  componentDidUpdate() {
     if (this.state.min === 0 && this.state.sec === 0) {
-      clearInterval(this.timer)
       this.props.set_status('end')
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  render () {
     return (
       <div className={this.state.sec <= 5 ? 'timer end' : 'timer'}>
         <p>{this.formatTime(this.state)}</p>
@@ -69,7 +71,6 @@ class Timer extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
     set_status: (status) => {
       dispatch(ACTIONS.set_status(status))
