@@ -9,10 +9,27 @@ class Grid extends React.Component {
 
   constructor(props) {
     super(props)
-    this.props.set_letters(this.shakeDices())
+    this.props.set_letters(this.generateLetters())
   }
 
-  shakeDices() {
+  direction() {
+    const randomDirection = Math.floor(Math.random() * 3)
+    let direction = ''
+
+    if (randomDirection === 0) {
+      direction = "deg0"
+    } else if (randomDirection === 1) {
+      direction = "deg90"
+    } else if (randomDirection === 2) {
+      direction = "deg180"
+    } else if (randomDirection === 3) {
+      direction = "deg270"
+    }
+
+    return direction
+  }
+
+  generateLetters() {
     /* Simulating the 16 dices of the game */
     const dices = [
       ['E', 'T', 'U', 'K', 'N', 'O'],
@@ -34,23 +51,34 @@ class Grid extends React.Component {
     ]
 
     /* Array to store generatedDices */
-    let generatedDices = []
+    let generatedLetters = []
 
     /* Generating the 16 dices */
     for (let i = 0; i <= 15; i++) {
+      let letter = {}
       /* Selecting a number between 0 and 5 */
       const randomNumber = Math.floor(Math.random() * 5)
       /* Selecting the letter of each dice according to the random generated number */
-      generatedDices.push(dices[i][randomNumber])
+      letter.letter = dices[i][randomNumber]
+      letter.direction = this.direction()
+      letter.selected = false
+
+      generatedLetters.push(letter)
     }
 
-    return generatedDices
+    return generatedLetters
   }
 
   render() {
     return (
-      <div className='grid'>
-        { this.props.letters.map((elem, index) => <Letter key={index}>{elem}</Letter>) }
+      <div id='grid' className='grid'>
+        {
+          this.props.letters.map(({ letter, direction, selected }, index) => {
+            return <Letter key={index} ukey={index} direction={direction} selected={selected}>
+              {letter}
+            </Letter>
+          })
+        }
       </div>
     )
   }

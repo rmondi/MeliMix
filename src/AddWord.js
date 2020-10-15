@@ -7,8 +7,22 @@ import * as ACTIONS from './actions'
 
 class AddWord extends React.Component {
 
+  resetSelectedLetters = () => {
+    const grid = document.getElementById('grid')
+
+    const letters = grid.childNodes
+
+    letters.forEach(letter => {
+      console.log(letter)
+    });
+  }
+
   handleClick = () => {
     this.props.add_word(this.props.word)
+  }
+
+  componentDidMount() {
+
   }
 
   render() {

@@ -14,6 +14,13 @@ const set_letters = (letters) => {
   }
 }
 
+const set_selected = (index) => {
+  return {
+    type: ACTIONS.SET_SELECTED,
+    index: index
+  }
+}
+
 const set_word = (letter) => {
   return {
     type: ACTIONS.SET_WORD,
@@ -41,4 +48,4 @@ const delete_word = (index) => {
   }
 }
 
-export { set_status, set_letters, set_word, set_new_game, add_word, delete_word }
+export { set_status, set_letters, set_selected, set_word, set_new_game, add_word, delete_word }

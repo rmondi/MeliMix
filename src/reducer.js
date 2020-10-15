@@ -19,6 +19,18 @@ const Reducer = (state = initState, action) => {
 
     newState = Object.assign({}, state, { letters: action.letters })
 
+  } else if (action.type === ACTIONS.SET_SELECTED) {
+
+    let letters = state.letters
+
+    letters.forEach((letter, i) => {
+      if (action.index === i) {
+        letter.selected = true
+      }
+    });
+
+    newState = Object.assign({}, state, { letters: letters })
+
   } else if (action.type === ACTIONS.SET_WORD) {
 
     newState = Object.assign({}, state, { word: state.word + action.letter })

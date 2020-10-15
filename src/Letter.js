@@ -7,53 +7,36 @@ import * as ACTIONS from './actions'
 
 class Letter extends React.Component {
 
-  direction() {
-    const randomDirection = Math.floor(Math.random() * 3)
-    let direction = ''
-
-    if (randomDirection === 0) {
-      direction = "deg0"
-    } else if (randomDirection === 1) {
-      direction = "deg90"
-    } else if (randomDirection === 2) {
-      direction = "deg180"
-    } else if (randomDirection === 3) {
-      direction = "deg270"
-    }
-
-    return direction
-  }
-
   isMarked(letter) {
-    let isMarked
-
     switch(letter) {
 
-      case "M":
-      case "W":
-      case "N":
-      case "Z":
-        isMarked = true
+      case 'M':
+      case 'W':
+      case 'N':
+      case 'Z':
+        return 'marked'
       break
       default:
-        isMarked = false
-
+        return ''
     }
+  }
 
-    return isMarked
+  formatLetter(letter, select) {
+    return select ? `${this.isMarked(letter)} selected` : this.isMarked(letter)
   }
 
   handleClick = (e) => {
-    e.target.classList.add('selected')
     this.props.set_word(e.target.innerText)
+    this.props.set_selected(this.props.ukey)
   }
 
   render() {
     const letter = this.props.children
+    const { direction, selected } = this.props
 
     return (
-      <div className={"letter " + this.direction()}>
-        <span className={this.isMarked(letter) ? "marked" : undefined} onClick={this.handleClick}>
+      <div className={`letter ${direction}`}>
+        <span className={this.formatLetter(letter, selected)} onClick={this.handleClick}>
           { letter }
         </span>
       </div>
@@ -62,10 +45,19 @@ class Letter extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+    letters: state.letters
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     set_word: (letter) => {
       dispatch(ACTIONS.set_word(letter))
+    },
+    set_selected : (index) => {
+      dispatch(ACTIONS.set_selected(index))
     }
   }
 }

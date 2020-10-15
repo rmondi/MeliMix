@@ -34,15 +34,12 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 6vh;
+  background-color: #fff;
 	color: #333333;
   cursor: pointer;
 
   transition: color ease-in-out .3s,
               background-color ease-in-out .3s;
-}
-
-.letter > span:hover {
-  background-color:
 }
 
 .letter > span.selected {
