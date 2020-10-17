@@ -48,6 +48,7 @@ const Reducer = (state = initState, action) => {
 
     let list = state.words
     list.push(action.word)
+    list = list.map(elem => {return elem})
 
     newState = Object.assign({}, state, { word: '', words: list })
 

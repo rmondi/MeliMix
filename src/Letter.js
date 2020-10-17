@@ -8,17 +8,21 @@ import * as ACTIONS from './actions'
 class Letter extends React.Component {
 
   isMarked(letter) {
+    let marked
+
     switch(letter) {
 
       case 'M':
       case 'W':
       case 'N':
       case 'Z':
-        return 'marked'
+        marked = 'marked'
       break
       default:
-        return ''
+        marked = ''
     }
+
+    return marked
   }
 
   formatLetter(letter, select) {
@@ -43,12 +47,6 @@ class Letter extends React.Component {
     )
   }
 
-}
-
-const mapStateToProps = (state) => {
-  return {
-    letters: state.letters
-  }
 }
 
 const mapDispatchToProps = (dispatch) => {

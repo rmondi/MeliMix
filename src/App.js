@@ -2,6 +2,7 @@ import React from 'react'
 import Timer from './Timer'
 import Grid from './Grid'
 import AddWord from './AddWord'
+import WordsList from './WordsList'
 import PlayButton from './PlayButton'
 
 import { connect } from 'react-redux'
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Timer />
           <Grid />
           <AddWord />
+          <WordsList />
         </React.Fragment>
       )
     } else if (status === 'end') {
