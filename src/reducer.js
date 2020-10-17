@@ -29,6 +29,8 @@ const Reducer = (state = initState, action) => {
       }
     });
 
+    letters = letters.map(elem => {return elem})
+
     newState = Object.assign({}, state, { letters: letters })
 
   } else if (action.type === ACTIONS.SET_WORD) {
@@ -47,10 +49,21 @@ const Reducer = (state = initState, action) => {
   } else if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.words
+    
     list.push(action.word)
     list = list.map(elem => {return elem})
 
-    newState = Object.assign({}, state, { word: '', words: list })
+    let letters = state.letters
+
+    letters.forEach(letter => {
+      if (letter.selected) {
+        letter.selected = false
+      }
+    });
+
+    letters = letters.map(elem => {return elem})
+
+    newState = Object.assign({}, state, {letters: letters, word: '', words: list })
 
   } else if (action.type === ACTIONS.DELETE_WORD) {
 
