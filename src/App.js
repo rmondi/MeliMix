@@ -5,6 +5,7 @@ import AddWord from './AddWord'
 import WordsList from './WordsList'
 import Results from './Results'
 import PlayButton from './PlayButton'
+import './App.css'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from './actions'
@@ -23,19 +24,19 @@ class App extends React.Component {
       return <PlayButton />
     } else if (status === 'start') {
       return (
-        <React.Fragment>
+        <div className='container'>
           <Timer />
           <Grid />
           <AddWord />
           <WordsList />
-        </React.Fragment>
+        </div>
       )
     } else if (status === 'end') {
       return (
-        <React.Fragment>
+        <div className='container'>
           <Results />
           <PlayButton />
-        </React.Fragment>
+        </div>
       )
     }
   }

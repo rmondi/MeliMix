@@ -30,8 +30,10 @@ class Letter extends React.Component {
   }
 
   handleClick = e => {
-    this.props.set_word(e.target.innerText)
-    this.props.set_selected(this.props.ukey)
+    if (!this.props.selected) {
+      this.props.set_word(e.target.innerText)
+      this.props.set_selected(this.props.ukey)
+    }
   }
 
   render() {

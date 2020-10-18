@@ -33,13 +33,19 @@
   text-transform: uppercase;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 6vh;
+  font-size: 36px;
   background-color: #fff;
 	color: #333333;
   cursor: pointer;
 
   transition: color ease-in-out .3s,
               background-color ease-in-out .3s;
+}
+
+@media screen and (min-width: 760px) {
+  .letter > span {
+    font-size: 48px;
+  }
 }
 
 .letter > span.selected {

@@ -8,7 +8,11 @@ import * as ACTIONS from './actions'
 class AddWord extends React.Component {
 
   handleClick = () => {
-    this.props.add_word(this.props.word)
+    const { word } = this.props
+
+    if (word !== '' && word.length > 1) {
+      this.props.add_word(this.props.word)
+    }
   }
 
   render() {
