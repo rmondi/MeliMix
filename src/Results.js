@@ -76,7 +76,7 @@ class Results extends React.Component {
       <div className='results'>
         <div className='results__total-score'>
           <span>{ this.total }</span>
-          Points
+          Point(s)
         </div>
         {
           this.results.length > 0 ?

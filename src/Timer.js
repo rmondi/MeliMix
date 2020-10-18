@@ -62,7 +62,7 @@ class Timer extends React.Component {
 
   render () {
     return (
-      <div className={this.state.min === 0 && this.state.sec <= 5 ? 'timer end' : 'timer'}>
+      <div className={this.state.min === 0 && this.state.sec <= 10 ? 'timer end' : 'timer'}>
         <p>{this.formatTime(this.state)}</p>
       </div>
     )
