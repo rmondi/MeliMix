@@ -3,6 +3,7 @@ import Timer from './Timer'
 import Grid from './Grid'
 import AddWord from './AddWord'
 import WordsList from './WordsList'
+import Results from './Results'
 import PlayButton from './PlayButton'
 
 import { connect } from 'react-redux'
@@ -10,7 +11,7 @@ import * as ACTIONS from './actions'
 
 class App extends React.Component {
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.props.set_status('start')
   }
 
@@ -32,7 +33,7 @@ class App extends React.Component {
     } else if (status === 'end') {
       return (
         <React.Fragment>
-          <div>Fin de la partie</div>
+          <Results />
           <PlayButton />
         </React.Fragment>
       )
@@ -41,13 +42,13 @@ class App extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { status: state.status }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    set_status: (status) => {
+    set_status: status => {
       dispatch(ACTIONS.set_status(status))
     }
   }

@@ -1,0 +1,28 @@
+.result {
+  display: flex;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.result:nth-child(even) {
+  background-color: #ecf0f1;
+}
+
+.result > .result__word,
+.result > .result__count,
+.result > .result__score {
+  display: flex;
+  align-items: center;
+}
+
+.result > .result__word {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.result > .result__count,
+.result > .result__score {
+  flex: 0 0 30%;
+  justify-content: center;
+  max-width: 30%;
+}
