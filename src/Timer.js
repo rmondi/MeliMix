@@ -62,7 +62,7 @@ class Timer extends React.Component {
 
   render () {
     return (
-      <div className={this.state.sec <= 5 ? 'timer end' : 'timer'}>
+      <div className={this.state.min === 0 && this.state.sec <= 5 ? 'timer end' : 'timer'}>
         <p>{this.formatTime(this.state)}</p>
       </div>
     )
@@ -70,9 +70,9 @@ class Timer extends React.Component {
 
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    set_status: (status) => {
+    set_status: status => {
       dispatch(ACTIONS.set_status(status))
     }
   }

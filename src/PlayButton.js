@@ -23,13 +23,13 @@ class PlayButton extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     status: state.status
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     set_new_game: () => {
       dispatch(ACTIONS.set_new_game())

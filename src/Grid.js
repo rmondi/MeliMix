@@ -84,15 +84,15 @@ class Grid extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     letters: state.letters
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    set_letters: (letters) => {
+    set_letters: letters => {
       dispatch(ACTIONS.set_letters(letters))
     }
   }

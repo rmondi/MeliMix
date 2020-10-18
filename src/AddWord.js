@@ -23,15 +23,15 @@ class AddWord extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     word: state.word
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    add_word: (word) => {
+    add_word: word => {
       dispatch(ACTIONS.add_word(word))
     }
   }
