@@ -29,18 +29,45 @@ class Letter extends React.Component {
     return select ? `${this.isMarked(letter)} selected` : this.isMarked(letter)
   }
 
-  isSelectable = (previousSelectedLetter, currentSelectedLetter) => {
-    console.log(previousSelectedLetter, currentSelectedLetter)
+  isAlreadySelected = (selectedLetters, currentSelectedLetter) => {
+    let alreadySelected = false
+
+    selectedLetters.forEach(({ index }) => {
+      if (index === currentSelectedLetter) alreadySelected = true
+    })
+
+    return alreadySelected
+  }
+
+  isAdjacent = (previous, current) => {
+    let adjacent = false
+
+    if ((previous + 1) === current) { // currentSelectedLetter is on the right
+      adjacent = true
+    } else if ((previous - 1) === current) { // currentSelectedLetter is on the left
+      adjacent = true
+    }
+
+    return adjacent
+  }
+
+  isSelectable = (selectedLetters, previousSelectedLetter, currentSelectedLetter) => {
+    console.log(selectedLetters, previousSelectedLetter, currentSelectedLetter)
 
     let selectable = false
 
-    if (previousSelectedLetter === null) { // First selected letter is selectable
+    // First selected letter is selectable
+    if (previousSelectedLetter === null) {
       selectable = true
-    } else { // From the second selected letter we have to check if it is selectable
-      if ((previousSelectedLetter + 1) === currentSelectedLetter) { // currentSelectedLetter is on the right
-        selectable = true
-      } else if ((previousSelectedLetter - 1) === currentSelectedLetter) { // currentSelectedLetter is on the left
-        selectable = true
+    } else {
+      // Check if the current selected letter is not already selected
+      if (!this.isAlreadySelected(selectedLetters, currentSelectedLetter)) {
+        // check if the current selected letter is adjacent from the previous selected letter
+        if (this.isAdjacent(previousSelectedLetter, currentSelectedLetter)) {
+          selectable = true
+        }
+      } else {
+        console.error('Letter is already selected')
       }
     }
 
@@ -48,9 +75,9 @@ class Letter extends React.Component {
   }
 
   handleClick = e => {
-    const { previousSelectedLetter, ukey } = this.props
+    const { selectedLetters, previousSelectedLetter, ukey } = this.props
 
-    if (this.isSelectable(previousSelectedLetter, ukey)) {
+    if (this.isSelectable(selectedLetters, previousSelectedLetter, ukey)) {
       this.props.select_letter(e.target.innerText, ukey)
       this.props.set_word(e.target.innerText)
       this.props.set_selected(ukey)
@@ -74,7 +101,8 @@ class Letter extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    previousSelectedLetter: state.previousSelectedLetter
+    previousSelectedLetter: state.previousSelectedLetter,
+    selectedLetters: state.selectedLetters
   }
 }
 
