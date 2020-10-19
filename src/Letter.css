@@ -48,9 +48,17 @@
   }
 }
 
+.letter > span.selected,
+.letter > span.forbidden {
+  color: #fff;
+}
+
 .letter > span.selected {
   background-color: #2ecc71;
-  color: #fff;
+}
+
+.letter > span.forbidden {
+  background-color: #e74c3c;
 }
 
 .letter > span.marked:before {

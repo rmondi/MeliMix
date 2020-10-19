@@ -1,8 +1,10 @@
 import * as ACTIONS from './actions_types'
 
 let initState = {
-  status: "",
+  status: '',
   letters: [],
+  selectedLetters: [],
+  previousSelectedLetter: null,
   word: '',
   words: []
 };
@@ -19,6 +21,16 @@ const Reducer = (state = initState, action) => {
 
     newState = Object.assign({}, state, { letters: action.letters })
 
+  } else if (action.type === ACTIONS.SELECT_LETTER) {
+
+    let selectedLetters = state.selectedLetters
+
+    selectedLetters.push({ letter: action.letter, index: action.index })
+
+    selectedLetters = selectedLetters.map(elem => {return elem})
+
+    newState = Object.assign({}, state, { selectedLetters: selectedLetters })
+
   } else if (action.type === ACTIONS.SET_SELECTED) {
 
     let letters = state.letters
@@ -31,7 +43,7 @@ const Reducer = (state = initState, action) => {
 
     letters = letters.map(elem => {return elem})
 
-    newState = Object.assign({}, state, { letters: letters })
+    newState = Object.assign({}, state, { previousSelectedLetter: action.index, letters: letters })
 
   } else if (action.type === ACTIONS.SET_WORD) {
 
@@ -42,6 +54,8 @@ const Reducer = (state = initState, action) => {
     newState = Object.assign({}, state, {
       status: 'start',
       letters: [],
+      selectedLetters: [],
+      previousSelectedLetter: null,
       word: '',
       words: []
     })
@@ -49,7 +63,7 @@ const Reducer = (state = initState, action) => {
   } else if (action.type === ACTIONS.ADD_WORD) {
 
     let list = state.words
-    
+
     list.push(action.word)
     list = list.map(elem => {return elem})
 
@@ -63,7 +77,7 @@ const Reducer = (state = initState, action) => {
 
     letters = letters.map(elem => {return elem})
 
-    newState = Object.assign({}, state, {letters: letters, word: '', words: list })
+    newState = Object.assign({}, state, {letters: letters, selectedLetters: [], previousSelectedLetter: null, word: '', words: list })
 
   } else if (action.type === ACTIONS.DELETE_WORD) {
 

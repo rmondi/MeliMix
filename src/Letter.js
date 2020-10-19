@@ -7,7 +7,7 @@ import * as ACTIONS from './actions'
 
 class Letter extends React.Component {
 
-  isMarked(letter) {
+  isMarked = letter => {
     let marked
 
     switch(letter) {
@@ -25,14 +25,35 @@ class Letter extends React.Component {
     return marked
   }
 
-  formatLetter(letter, select) {
+  formatLetter = (letter, select) => {
     return select ? `${this.isMarked(letter)} selected` : this.isMarked(letter)
   }
 
+  isSelectable = (previousSelectedLetter, currentSelectedLetter) => {
+    console.log(previousSelectedLetter, currentSelectedLetter)
+
+    let selectable = false
+
+    if (previousSelectedLetter === null) { // First selected letter is selectable
+      selectable = true
+    } else { // From the second selected letter we have to check if it is selectable
+      if ((previousSelectedLetter + 1) === currentSelectedLetter) { // currentSelectedLetter is on the right
+        selectable = true
+      } else if ((previousSelectedLetter - 1) === currentSelectedLetter) { // currentSelectedLetter is on the left
+        selectable = true
+      }
+    }
+
+    return selectable
+  }
+
   handleClick = e => {
-    if (!this.props.selected) {
+    const { previousSelectedLetter, ukey } = this.props
+
+    if (this.isSelectable(previousSelectedLetter, ukey)) {
+      this.props.select_letter(e.target.innerText, ukey)
       this.props.set_word(e.target.innerText)
-      this.props.set_selected(this.props.ukey)
+      this.props.set_selected(ukey)
     }
   }
 
@@ -51,8 +72,17 @@ class Letter extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+  return {
+    previousSelectedLetter: state.previousSelectedLetter
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
+    select_letter: (letter, index) => {
+      dispatch(ACTIONS.select_letter(letter, index))
+    },
     set_word: letter => {
       dispatch(ACTIONS.set_word(letter))
     },
@@ -69,4 +99,4 @@ Letter.propTypes = {
   ukey: PropTypes.number
 }
 
-export default connect(null, mapDispatchToProps)(Letter);
+export default connect(mapStateToProps, mapDispatchToProps)(Letter);
