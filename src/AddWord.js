@@ -7,11 +7,21 @@ import * as ACTIONS from './actions'
 
 class AddWord extends React.Component {
 
+  setWord = selectedLetters => {
+    let word = ''
+
+    selectedLetters.forEach(({ letter }) => {
+      word = word + letter
+    });
+
+    return word
+  }
+
   handleClick = () => {
-    const { word } = this.props
+    const word = this.setWord(this.props.selectedLetters)
 
     if (word !== '' && word.length > 1) {
-      this.props.add_word(this.props.word)
+      this.props.add_word(word)
     }
   }
 
@@ -19,7 +29,7 @@ class AddWord extends React.Component {
     return (
       <div className='addword'>
         <Button onclick={this.handleClick} type='primary'>
-          {`Ajouter le mot ${this.props.word}`}
+          {`Ajouter le mot ${this.setWord(this.props.selectedLetters)}`}
         </Button>
       </div>
     )
@@ -29,7 +39,7 @@ class AddWord extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    word: state.word
+    selectedLetters: state.selectedLetters
   }
 }
 

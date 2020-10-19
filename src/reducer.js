@@ -5,7 +5,6 @@ let initState = {
   letters: [],
   selectedLetters: [],
   previousSelectedLetter: null,
-  word: '',
   words: []
 };
 
@@ -29,10 +28,6 @@ const Reducer = (state = initState, action) => {
 
     selectedLetters = selectedLetters.map(elem => {return elem})
 
-    newState = Object.assign({}, state, { selectedLetters: selectedLetters })
-
-  } else if (action.type === ACTIONS.SET_SELECTED) {
-
     let letters = state.letters
 
     letters.forEach((letter, i) => {
@@ -43,11 +38,7 @@ const Reducer = (state = initState, action) => {
 
     letters = letters.map(elem => {return elem})
 
-    newState = Object.assign({}, state, { previousSelectedLetter: action.index, letters: letters })
-
-  } else if (action.type === ACTIONS.SET_WORD) {
-
-    newState = Object.assign({}, state, { word: state.word + action.letter })
+    newState = Object.assign({}, state, { previousSelectedLetter: action.index, letters: letters, selectedLetters: selectedLetters })
 
   } else if (action.type === ACTIONS.SET_NEW_GAME) {
 
@@ -56,7 +47,6 @@ const Reducer = (state = initState, action) => {
       letters: [],
       selectedLetters: [],
       previousSelectedLetter: null,
-      word: '',
       words: []
     })
 
@@ -77,7 +67,7 @@ const Reducer = (state = initState, action) => {
 
     letters = letters.map(elem => {return elem})
 
-    newState = Object.assign({}, state, {letters: letters, selectedLetters: [], previousSelectedLetter: null, word: '', words: list })
+    newState = Object.assign({}, state, {letters: letters, selectedLetters: [], previousSelectedLetter: null, words: list })
 
   } else if (action.type === ACTIONS.DELETE_WORD) {
 

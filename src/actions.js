@@ -21,13 +21,6 @@ export const set_selected = index => {
   }
 }
 
-export const set_word = letter => {
-  return {
-    type: ACTIONS.SET_WORD,
-    letter: letter
-  }
-}
-
 export const select_letter = (letter, index) => {
   return {
     type: ACTIONS.SELECT_LETTER,
